@@ -100,4 +100,4 @@ const hero2 = new Healer('Kanin', 1, 'cure')
 console.log(hero1.attack())
 console.log(hero1.greet())
 
-// TODO https://javascript.info/prototype-inheritance
+// TODO https://javascript.info/prototype-inheritance // https://dmitripavlutin.com/gentle-explanation-of-this-in-javascript/
