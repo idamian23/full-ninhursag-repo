@@ -1,0 +1,8 @@
+.header {
+    display: flex;
+}
+
+.header--title {
+    font-size: 35px;
+    margin: 0 auto;
+}
