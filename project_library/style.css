@@ -2,7 +2,7 @@
     display: flex;
 }
 
-.header--title {
+.header__title {
     font-size: 35px;
     margin: 0 auto;
 }
