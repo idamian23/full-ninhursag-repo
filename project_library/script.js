@@ -9,14 +9,14 @@ function Book(title, author, pages, read) {
   this.author = author
   this.pages = pages
   this.read = read
-
-  this.info = function () {
-    return `${title} by ${author}, ${pages} pages, ${read}.`
-  }
 }
 
+// Book.prototype.info = function () {
+//   return `${title} by ${author}, ${pages} pages, ${read}.`
+// }
+
 // THE LIST OF BOOKS
-let book1 = new Book('Abracadabra', 'Piticot', '67', 'not read')
+let book1 = new Book('Sudoku', 'Hikaru Nakamura', '67', 'not read')
 addBookToLibrary(book1)
 
 let book2 = new Book('The Great Gatsby', 'F. Scott Fitzgerald', '180', 'read')
@@ -64,4 +64,16 @@ addBookToLibrary(book10)
 // END OF BOOKS
 
 //DISPLAY ON PAGE THE LIBRARY
-const displayLibrary = function () {}
+let tableBody = document.querySelector('.tbody')
+
+for (let book of myLibrary) {
+  let tableRow = document.createElement('tr')
+  tableRow.setAttribute('class', 'row')
+
+  for (let property in book) {
+    let tableCell = document.createElement('td')
+    tableCell.textContent = book[property]
+    tableRow.appendChild(tableCell)
+  }
+  tableBody.appendChild(tableRow)
+}
