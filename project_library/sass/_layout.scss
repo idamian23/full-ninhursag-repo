@@ -1,0 +1,19 @@
+.container {
+    max-width: 120rem;
+    display: flex;
+    flex-direction: column;
+    margin: 10rem auto 0;
+}
+
+.header {
+    font-size: 4rem;
+    font-weight: 700;
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.content {
+}

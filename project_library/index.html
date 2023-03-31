@@ -6,25 +6,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Project Library</title>
         <link rel="stylesheet" href="css/style.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
-        <header class="header">
-            <div class="header__title">My library</div>
-        </header>
+        <div class="container">
+            <header class="header">My library</header>
+            <div class="content">
+                <table class="table">
+                    <thead class="table__head">
+                        <tr class="row">
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Pages</th>
+                            <th>Read/Not read</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table__body"></tbody>
+                </table>
 
-        <table class="table">
-            <thead class="thead">
-                <tr class="row">
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Pages</th>
-                    <th>Read/Not read</th>
-                </tr>
-            </thead>
-            <tbody class="tbody"></tbody>
-        </table>
-
-        <section class="library"></section>
+                <section class="library"></section>
+            </div>
+        </div>
         <footer><script src="script.js"></script></footer>
     </body>
 </html>

@@ -64,11 +64,11 @@ addBookToLibrary(book10)
 // END OF BOOKS
 
 //DISPLAY ON PAGE THE LIBRARY
-let tableBody = document.querySelector('.tbody')
+let tableBody = document.querySelector('.table__body')
 
 for (let book of myLibrary) {
   let tableRow = document.createElement('tr')
-  tableRow.setAttribute('class', 'row')
+  tableRow.setAttribute('class', 'table__row')
 
   for (let property in book) {
     let tableCell = document.createElement('td')

@@ -37,9 +37,40 @@ html {
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   line-height: 1.6;
+  height: 100vh;
+  background-image: linear-gradient(to right, #2d8633, #116416);
+  color: #86c98a;
+}
+
+.container {
+  max-width: 120rem;
+  display: flex;
+  flex-direction: column;
+  margin: 10rem auto 0;
+}
+
+.header {
+  font-size: 4rem;
+  font-weight: 700;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.table {
+  margin: 0 auto;
+  width: 100%;
+}
+.table__head {
+  font-size: 3rem;
+}
+.table__body {
+  font-size: 2rem;
 }
 
 /*# sourceMappingURL=style.css.map */
