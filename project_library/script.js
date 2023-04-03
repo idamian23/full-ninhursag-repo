@@ -66,14 +66,84 @@ addBookToLibrary(book10)
 //DISPLAY ON PAGE THE LIBRARY
 let tableBody = document.querySelector('.table__body')
 
-for (let book of myLibrary) {
+const displayBooks = function () {
+  for (let book of myLibrary) {
+    let tableRow = document.createElement('tr')
+    tableRow.setAttribute('class', 'table__row')
+    tableRow.dataset.index = myLibrary.indexOf(book)
+    let delButton = document.createElement('button')
+    delButton.textContent = 'Delete book'
+    delButton.setAttribute('class', 'delete-button')
+
+    for (let property in book) {
+      let tableCell = document.createElement('td')
+      tableCell.textContent = book[property]
+      tableRow.append(tableCell)
+      tableRow.append(delButton)
+    }
+    tableBody.append(tableRow)
+  }
+}
+displayBooks()
+// ADD NEW BOOK BUTTON
+let addBookButton = document.querySelector('.add-book')
+let formPopup = document.querySelector('.form-popup')
+let submitButton = document.querySelector('.submit')
+let form = document.querySelector('.form-container')
+
+const openForm = function () {
+  if (formPopup.style.display === 'none') {
+    formPopup.style.display = 'block'
+  } else {
+    formPopup.style.display = 'none'
+  }
+}
+addBookButton.addEventListener('click', openForm)
+
+// const getBookFromInput = function () {
+//   const title = document.getElementById('title').value
+//   const author = document.getElementById('author').value
+//   const pages = document.getElementById('pages').value
+//   const isRead = document.getElementById('read-notread').value
+//   return new Book(title, author, pages, isRead)
+// }
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
+  const title = document.getElementById('title').value
+  const author = document.getElementById('author').value
+  const pages = document.getElementById('pages').value
+  const isRead = document.getElementById('read-notread').value
+  let newBook = new Book(title, author, pages, isRead)
+  addBookToLibrary(newBook)
+
   let tableRow = document.createElement('tr')
   tableRow.setAttribute('class', 'table__row')
+  tableRow.dataset.index = myLibrary.indexOf(newBook)
+  let delButton = document.createElement('button')
+  delButton.textContent = 'Delete book'
+  delButton.setAttribute('class', 'delete-button')
 
-  for (let property in book) {
+  for (let property in newBook) {
     let tableCell = document.createElement('td')
-    tableCell.textContent = book[property]
-    tableRow.appendChild(tableCell)
+    tableCell.textContent = newBook[property]
+    tableRow.append(tableCell)
+    tableRow.append(delButton)
   }
-  tableBody.appendChild(tableRow)
-}
+  tableBody.append(tableRow)
+
+  form.reset()
+})
+
+//DELETE BOOK
+
+tableBody.addEventListener('click', function (event) {
+  if (event.target.classList.contains('delete-button')) {
+    const index = event.target.parentNode.dataset.index
+    myLibrary.splice(index, 1)
+    tableBody.innerHTML = ''
+    displayBooks()
+  }
+})
+
+// READ NOT READ

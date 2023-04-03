@@ -72,5 +72,26 @@ body {
 .table__body {
   font-size: 2rem;
 }
+.table__row:nth-child(even) {
+  background-color: #116416;
+}
+.table__row:nth-child(even) td {
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+}
+
+.table__footer {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.table__footer .btn {
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.form-popup {
+  display: none;
+  margin-bottom: 2rem;
+}
 
 /*# sourceMappingURL=style.css.map */

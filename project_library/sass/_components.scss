@@ -12,6 +12,27 @@
         font-size: 2rem;
     }
 
-    &__row {
+    &__row:nth-child(even) {
+        background-color: #116416;
+
+        td {
+            border-top: 2px solid red;
+            border-bottom: 2px solid red;
+        }
     }
+}
+
+.table__footer {
+    display: flex;
+    flex-direction: row-reverse;
+
+    .btn {
+        padding: 1rem;
+        margin-top: 2rem;
+    }
+}
+
+.form-popup {
+    display: none;
+    margin-bottom: 2rem;
 }
