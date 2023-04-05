@@ -1,0 +1,135 @@
+/*
+primary : #40148c
+primary dark : #4c14a0
+primary light : #601cd4
+
+yellow : #ffd454
+purple : #6c4cbc
+*/
+:root {
+  --color-primary: #40148c;
+  --color-primary-dark: #4c14a0;
+  --color-primary-light: #601cd4;
+  --yellow: #ffd454;
+  --purple: #6c4cbc;
+  --pink: #fa3c74;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-weight: 400;
+  line-height: 1.6;
+  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark));
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.title {
+  width: fit-content;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.8;
+  font-size: 4rem;
+  animation: pulsate 1.5s infinite alternate;
+}
+
+.neonText {
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #f09, 0 0 82px #f09, 0 0 92px #f09, 0 0 102px #f09, 0 0 151px #f09;
+}
+
+@keyframes pulsate {
+  100% {
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #bc13fe, 0 0 80px #bc13fe, 0 0 90px #bc13fe, 0 0 100px #bc13fe, 0 0 150px #bc13fe;
+  }
+  0% {
+    text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #fff, 0 0 10px #bc13fe, 0 0 45px #bc13fe, 0 0 55px #bc13fe, 0 0 70px #bc13fe, 0 0 80px #bc13fe;
+  }
+}
+.container {
+  height: 50rem;
+  width: 50rem;
+  margin: 10rem auto 0;
+}
+
+.board {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.board__square {
+  flex: 0 0 33.33333%;
+  cursor: pointer;
+}
+
+.player_x,
+.player_0 {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.player_x {
+  background-color: goldenrod;
+}
+
+.player_0 {
+  background-color: tomato;
+}
+
+.controls {
+  display: flex;
+  margin-top: 1.5rem;
+}
+.controls .start-button {
+  width: 50%;
+  height: 5rem;
+  margin-right: auto;
+}
+.controls .reset-button {
+  width: 50%;
+}
+
+#square_1,
+#square_2 {
+  border-bottom: 10px solid var(--pink);
+  border-right: 10px solid var(--pink);
+}
+
+#square_3 {
+  border-bottom: 10px solid var(--pink);
+}
+
+#square_4,
+#square_5 {
+  border-right: 10px solid var(--pink);
+}
+
+#square_7,
+#square_8,
+#square_9 {
+  border-top: 10px solid var(--pink);
+}
+
+#square_7,
+#square_8 {
+  border-right: 10px solid var(--pink);
+}
+
+/*# sourceMappingURL=style.css.map */

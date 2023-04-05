@@ -101,3 +101,21 @@ console.log(hero1.attack())
 console.log(hero1.greet())
 
 // TODO https://javascript.info/prototype-inheritance // https://dmitripavlutin.com/gentle-explanation-of-this-in-javascript/
+
+// FActory Functions
+const personFactory = (name, age) => {
+  const sayHello = () => console.log('Hello!')
+  return { name, age, sayHello }
+}
+
+const jeff = personFactory('jeff', 27)
+
+console.log(jeff.name)
+jeff.sayHello()
+
+const name = 'Maynard'
+const color = 'red'
+const number = 34
+const food = 'rice'
+
+console.log({ name, color, number, food })
