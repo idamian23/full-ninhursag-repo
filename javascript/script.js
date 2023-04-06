@@ -119,3 +119,30 @@ const number = 34
 const food = 'rice'
 
 console.log({ name, color, number, food })
+
+class Person {
+  constructor(name, age) {
+    this.name = name
+    this.age = age
+  }
+
+  getName() {
+    return this.name
+  }
+
+  getAge() {
+    return this.age
+  }
+
+  setName(newName) {
+    this.name = newName
+  }
+
+  sayHello() {
+    console.log(
+      `Hello, my name is ${this.name} and I am ${this.age} years old.`,
+    )
+  }
+}
+
+const ionut = new Person('ionut', 18)
