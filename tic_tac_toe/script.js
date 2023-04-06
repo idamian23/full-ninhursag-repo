@@ -1,92 +1,85 @@
-//BOARD
-let board = document.querySelector('.board')
-let boardContent = ['', '', '', '', '', '', '', '', '']
+//Variables
 
-//SQUARE
-let squares = document.querySelectorAll('.board__square')
+const cells = document.querySelectorAll('.cell')
+const statusText = document.querySelector('.statusText')
+const restartBtn = document.querySelector('#restartBtn')
+const winningCombinations = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+]
 
-//BUTTONS
-let controlsMenu = document.querySelector('.controls')
-let startButton = document.querySelector('.start-button')
-let resetButton = document.querySelector('.reset-button')
+let options = ['', '', '', '', '', '', '', '', '']
+let currentPlayer = 'X'
+let running = false
 
-//Create board
-const createBoard = function () {
-  if (!board.firstChild) {
-    for (let i = 1; i <= 9; i++) {
-      let square = document.createElement('div')
-      square.setAttribute('class', 'board__square')
-      square.setAttribute('id', `square_${i}`)
-      board.append(square)
-    }
-    controlsMenu.style.marginTop = '8rem'
-  } else {
-    alert('Game is on!')
+initializeGame()
+
+function initializeGame() {
+  cells.forEach((cell) => cell.addEventListener('click', cellClicked))
+  restartBtn.addEventListener('click', restartGame)
+  statusText.textContent = `${currentPlayer}'s turn`
+  running = true
+}
+
+function cellClicked() {
+  const cellIndex = this.getAttribute('cellIndex')
+
+  if (options[cellIndex] != '' || !running) {
+    return
   }
+  updateCell(this, cellIndex)
+  checkWinner()
 }
 
-startButton.addEventListener('click', createBoard)
-
-//Reset board
-const resetBoard = function () {
-  if (board.firstChild) {
-    while (board.firstChild) {
-      board.removeChild(board.firstChild)
-    }
-    boardContent = ['', '', '', '', '', '', '', '', '']
-    createBoard()
-  } else {
-    alert('Game is not started!')
-  }
+function updateCell(cell, index) {
+  options[index] = currentPlayer
+  cell.textContent = currentPlayer
 }
 
-resetButton.addEventListener('click', resetBoard)
-
-// SWAP TURN
-isPlayer_x_turn = true
-
-const swapTurn = function () {
-  isPlayer_x_turn = !isPlayer_x_turn
+function changePlayer() {
+  currentPlayer = currentPlayer == 'X' ? 'O' : 'X'
+  statusText.textContent = `${currentPlayer}'s turn`
 }
 
-// Handle clicks
-const squareClick = function (e) {
-  const square = e.target
-  const currentClass = isPlayer_x_turn ? 'player_x' : 'player_0'
-  let value = parseInt(square.id.slice(-1) - 1)
+function checkWinner() {
+  let roundWon = false
 
-  if (isPlayer_x_turn) {
-    square.classList.add(currentClass)
-    boardContent[value] = 'x'
-    swapTurn()
-  } else {
-    square.classList.add(currentClass)
-    boardContent[value] = '0'
-    swapTurn()
-  }
-}
-
-board.addEventListener('click', squareClick)
-
-// CHECK WINNER
-
-const checkingWinner = function (array) {
-  const winningCombinations = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ]
   for (let i = 0; i < winningCombinations.length; i++) {
-    const [a, b, c] = winningCombinations[i]
-    if (array[a] && array[a] === array[b] && array[a] === array[c]) {
-      alert('!!!')
-    } else {
-      return true
+    const condition = winningCombinations[i]
+    const a = options[condition[0]]
+    const b = options[condition[1]]
+    const c = options[condition[2]]
+
+    if (a == '' || b == '' || c == '') {
+      continue
+    }
+    if (a == b && b == c) {
+      roundWon = true
+      break
     }
   }
+
+  if (roundWon) {
+    statusText.textContent = `${currentPlayer} wins!`
+    running = false
+  } else if (!options.includes('')) {
+    statusText.textContent = `Draw`
+    running = false
+  } else {
+    changePlayer()
+  }
+}
+
+function restartGame() {
+  currentPlayer = 'X'
+  options = ['', '', '', '', '', '', '', '', '']
+  statusText.textContent = `${currentPlayer}'s turn`
+  cells.forEach((cell) => (cell.textContent = ''))
+  running = true
 }
