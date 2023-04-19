@@ -1,0 +1,42 @@
+.body__main-page {
+    background-image: url("../images/background.jpg");
+    max-width: 100%;
+    height: auto;
+}
+
+.navbar {
+    display: flex;
+    width: auto;
+    height: 10rem;
+    justify-content: space-between;
+
+    &__first-container {
+        margin-left: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .navbar__menu--svg {
+            width: 5rem;
+            height: 5rem;
+            fill: #f0f0f0;
+        }
+
+        .navbar__menu--title {
+            margin: 0 0 0 1rem;
+
+            color: #f0f0f0;
+        }
+    }
+
+    &__second-container {
+        color: #f0f0f0;
+        align-self: center;
+    }
+
+    &__third-container {
+        align-self: center;
+        color: #f0f0f0;
+        margin-right: 1rem;
+    }
+}
